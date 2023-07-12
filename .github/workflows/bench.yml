@@ -18,3 +18,20 @@ jobs:
         sudo update-alternatives --set c++ /usr/bin/clang++-13
         sudo ln -sf /usr/bin/clang-13 /usr/bin/clang
         sudo ln -sf /usr/bin/clang++-13 /usr/bin/clang++
+    - name: build yk 
+      run: |  
+        export CARGO_HOME="${PWD}/.cargo"
+        export RUSTUP_HOME="${PWD}/.rustup"
+        # install rust
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rustup.sh
+        sh rustup.sh --default-host x86_64-unknown-linux-gnu --default-toolchain nightly --no-modify-path --profile minimal -y
+        export PATH=${CARGO_HOME}/bin/:$PATH
+
+        rustup toolchain install nightly --allow-downgrade
+
+        # yk bulid
+        git clone --depth=1 https://github.com/ykjit/yk
+        cd yk
+        git submodule update --init --recursive
+        cargo build
+        cd ..
