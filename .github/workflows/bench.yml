@@ -10,10 +10,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: install
       run: |
-        apt-get update && apt-get -y install clang-13 make curl procps file git cmake python3 libtinfo-dev libzip-dev ninja-build
-        update-alternatives --install /usr/bin/cc cc /usr/bin/clang-13 999
-        update-alternatives --set cc /usr/bin/clang-13
-        update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-13 999
-        update-alternatives --set c++ /usr/bin/clang++-13
-        ln -sf /usr/bin/clang-13 /usr/bin/clang
-        ln -sf /usr/bin/clang++-13 /usr/bin/clang++
+        sudo apt-get update && apt-get -y install clang-13 make curl procps file git cmake python3 libtinfo-dev libzip-dev ninja-build
+        sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-13 999
+        sudo update-alternatives --set cc /usr/bin/clang-13
+        sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-13 999
+        sudo update-alternatives --set c++ /usr/bin/clang++-13
+        sudo ln -sf /usr/bin/clang-13 /usr/bin/clang
+        sudo ln -sf /usr/bin/clang++-13 /usr/bin/clang++
