@@ -38,7 +38,7 @@ cd ..
 
 cd .. # move to project root directory
 
-# yklua benchmark prob
+# yklua benchmarks tests
 ./build/yklua/src/lua ./yklua/fasta.lua 
 ./build/yklua/src/lua ./yklua/fannkuchredux.lua 3
 ./build/yklua/src/lua ./yklua/fasta.lua 10
