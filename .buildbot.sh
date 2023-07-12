@@ -2,7 +2,7 @@
 
 set -eu
 
-rm -fr ./build && mkdir ./build 
+mkdir build 
 cd build
 
 export CARGO_HOME="${PWD}/.cargo"
