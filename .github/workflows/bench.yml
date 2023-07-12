@@ -1,0 +1,19 @@
+name: Bench
+
+on: [push]
+
+jobs:
+  traanslate:
+    name: Bench
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install
+      run: |
+        apt-get update && apt-get -y install clang-13 make curl procps file git cmake python3 libtinfo-dev libzip-dev ninja-build
+        update-alternatives --install /usr/bin/cc cc /usr/bin/clang-13 999
+        update-alternatives --set cc /usr/bin/clang-13
+        update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-13 999
+        update-alternatives --set c++ /usr/bin/clang++-13
+        ln -sf /usr/bin/clang-13 /usr/bin/clang
+        ln -sf /usr/bin/clang++-13 /usr/bin/clang++
