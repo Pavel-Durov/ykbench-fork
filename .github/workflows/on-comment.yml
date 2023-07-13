@@ -9,8 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+    
     steps:
-      - uses: mshick/add-pr-comment@v2
-        with:
-          message: |
-            **Hello from Github Action**!
+        - name: Install dependencies
+          run: |
+            wget https://github.com/sharkdp/hyperfine/releases/download/v1.15.0/hyperfine_1.15.0_amd64.deb
+            sudo dpkg -i hyperfine_1.15.0_amd64.deb
+        - name: Run benchmark
+          run: hyperfine --warmup 1 --runs 1 'sleep 1' --export-markdown out.md
+        - uses: mshick/add-pr-comment@v2
+          with:
+            message-path: ./out.md
