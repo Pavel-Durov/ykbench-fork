@@ -1,0 +1,25 @@
+name: "Comment"
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    if: github.event.issue.pull_request && contains(github.event.comment.body, 'whoop-whoop')
+    permissions:
+      pull-requests: write
+    
+    steps:
+        - name: Install dependencies
+          run: |
+            wget https://github.com/sharkdp/hyperfine/releases/download/v1.15.0/hyperfine_1.15.0_amd64.deb
+            sudo dpkg -i hyperfine_1.15.0_amd64.deb
+        - name: Building YK
+          run: echo Build or download YK binary
+        - name: Run benchmark
+          run: hyperfine --warmup 1 --runs 1 'sleep 1' 'sleep 2' 'sleep 3' 'sleep 4' --export-markdown hyperfine.md
+        - uses: mshick/add-pr-comment@v2
+          with:
+            message-path: ./hyperfine.md
