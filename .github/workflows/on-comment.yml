@@ -1,4 +1,4 @@
-name: "Deploy on Comment"
+name: "Comment"
 
 on:
   issue_comment:
