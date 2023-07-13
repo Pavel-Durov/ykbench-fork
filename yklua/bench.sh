@@ -10,5 +10,5 @@ if [ ! -f "${lua}" ]; then
 fi
 
 hyperfine --warmup 1 --runs 10 "${lua} ./yklua/fannkuchredux.lua 3"
-hyperfine --warmup 1 --runs 10 "${lua} ./yklua/fasta.lua 10"
+hyperfine --warmup 1 --runs 10 "${lua} ./yklua/fasta.lua 3"
 hyperfine --warmup 1 --runs 10 "${lua} ./yklua/binary-trees.lua"
