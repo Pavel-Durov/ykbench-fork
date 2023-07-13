@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  test:
+  bench:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
